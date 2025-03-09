@@ -66,7 +66,7 @@ class DB {
     }
 
     public function delete($table, $where) {
-        return $this->action('DELETE * ', $table, $where);
+        return $this->action('DELETE', $table, $where);
     }
  
     public function insert($table, $fields = array()) {
@@ -85,7 +85,7 @@ class DB {
               }
     
 
-              $sql = "INSERT INTO users (`" . implode('` , `', $keys)  ."`) VALUES ({$values})";
+              $sql = "INSERT INTO {$table} (`" . implode('` , `', $keys)  ."`) VALUES ({$values})";
        
               if(!$this->query($sql, $fields)->error()) {
                   return true;
